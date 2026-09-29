@@ -42,9 +42,9 @@ sys.stdout = tee
 sys.stdout.isatty = lambda: True 
 
 # Credenciales y rutas
-usr = 'Antonio'
-psw = 'anatema2001'
-db_path = '/home/antonio/Dropbox/CSIC-IMF_BHP/valencia_BHP/BHP_dB.sqlite'
+usr = 'user'
+psw = 'yourpassword'
+db_path = '/home/.../db.sqlite'
 
 def clean_data(value):
     """Convierte nulos a cadenas vacías y limpia saltos de línea."""
