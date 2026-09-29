@@ -19,7 +19,7 @@ Playing the SQL sentences in the file 'BHP_database_design.txt' in a SQL console
    
 ### `addmovementBHP`:
 
-`addmovementBHPreg` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
+`addmovementBHP` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
 
 #### Key Functions
 
@@ -30,7 +30,7 @@ Playing the SQL sentences in the file 'BHP_database_design.txt' in a SQL console
 
 There are availabe two versios of "addmovementBHP":
 
-* **addmovementBHPreg.py** (OS Evironment Version): This version runs directly using the global system Python installation and system-wide packages. While it doesn't require activating a virtual environment beforehand, it is more susceptible to breaking if global Python packages or system libraries are updated or changed, which can occasionally cause compatibility issues with browser automation tools.
+* **addmovementBHPos.py** (OS Evironment Version): This version runs directly using the global system Python installation and system-wide packages. While it doesn't require activating a virtual environment beforehand, it is more susceptible to breaking if global Python packages or system libraries are updated or changed, which can occasionally cause compatibility issues with browser automation tools.
 
 * **addmovementBHPvenv.py** (Virtual Environment Version): This version runs inside an isolated Python virtual environment configured specifically for your project. Its main advantage is that all dependencies (such as Selenium, WebDriver binaries, colorama, etc.) are self-contained within that environment. This prevents version conflicts with other Python packages installed globally on your Linux system and ensures a stable, predictable execution environment every time you activate it.
 
@@ -43,7 +43,7 @@ There are availabe two versios of "addmovementBHP":
 #### Key Functions
 
 * **Metadata Cloning:** It reads the values of **armadura (key signature)** (e. g. 'S_alter') and **mensuración (time signature) or mensuration sign** ('S_mens') from the Superius voice of a movement.
-* **Voice Validation:** It checks whether the respective lower voices—Altus (`A_start_pitch`), Tenor (`T_start_pitch`), and Bassus (`B_start_pitch`) contain active musical data, ensuring it only targets voices that actually exist in that specific piece.
+* **Voice Validation:** It checks whether the respective lower voices Altus (`A_start_pitch`), Tenor (`T_start_pitch`), and Bassus (`B_start_pitch`) contain active musical data, ensuring it only targets voices that actually exist in that specific piece.
 * **Dynamic SQL Updates:** It propagates the Superius key signature and mensuration values into the equivalent fields for the active lower voices (`A_alter`/`A_mens`, `T_alter`/`T_mens`, `B_alter`/`B_mens`).
 * **Interactive Control:** Running directly in your terminal, it pauses at each record allowing you to review and choose whether to save (`ENTER`), skip (`s`), or exit (`q`) step-by-step.
 
