@@ -32,7 +32,7 @@ There are availabe two versios of "addmovementBHP":
 
 * **addmovementBHPreg.py** (OS Evironment Version): This version runs directly using the global system Python installation and system-wide packages. While it doesn't require activating a virtual environment beforehand, it is more susceptible to breaking if global Python packages or system libraries are updated or changed, which can occasionally cause compatibility issues with browser automation tools.
 
-* **addmovementBHPvenv** (Virtual Environment Version): This version runs inside an isolated Python virtual environment configured specifically for your project. Its main advantage is that all dependencies (such as Selenium, WebDriver binaries, colorama, etc.) are self-contained within that environment. This prevents version conflicts with other Python packages installed globally on your Linux system and ensures a stable, predictable execution environment every time you activate it.
+* **addmovementBHPvenv.py** (Virtual Environment Version): This version runs inside an isolated Python virtual environment configured specifically for your project. Its main advantage is that all dependencies (such as Selenium, WebDriver binaries, colorama, etc.) are self-contained within that environment. This prevents version conflicts with other Python packages installed globally on your Linux system and ensures a stable, predictable execution environment every time you activate it.
 
 ---
 
