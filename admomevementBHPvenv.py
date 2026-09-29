@@ -71,7 +71,7 @@ usr = os.getenv('BHP_USER', 'user')
 psw = os.getenv('BHP_PASS', 'yourpassword')
 submission_author = 'your_name'
 
-db_path = '/home/antonio/Dropbox/CSIC-IMF_BHP/valencia_BHP/BHP_dB.sqlite'
+db_path = '/home/.../dB.sqlite'
 
 def clean_data(value):
     """Convierte nulos a cadenas vacías y limpia saltos de línea."""
