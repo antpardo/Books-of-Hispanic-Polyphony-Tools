@@ -6,10 +6,16 @@ Developed by Antonio Pardo-Cayuela (University of Murcia), these tools facilitat
 
 The toolkit consists of the following elements:
 
-### SQLite Database (`BHP_dB.sqlite`)
+### 'BHP_database_design' (BHP SQLite Database) 
 
-Contains structured tables following the design of the BHP input data forms.
+Playing the SQL sentences in the file 'BHP_database_design.txt' in a SQL console produces a database which follows the same schema of Books of Hispanic Polyphony (BHP) platform, defining three interconnected tables for data management:
 
+* **"source"** Table: Stores general metadata about historical musical sources, manuscripts, and prints (e.g., sigla, geographic location, archive details, physical descriptions, watermarks, composers, and bibliographic concordances).
+
+* **"work"** Table: Manages information regarding specific musical compositions linked to a source (e.g., titles, text incipits, genres, liturgical contexts, ascriptions, and modern editions). It connects to the source table via a foreign key (S_ID).
+
+* **"movement"** Table: Tracks individual movements and compositional parts, linked to both sources and works (S_ID and W_ID). It includes detailed voice-specific musical parameters for polyphonic parts—such as Cantus, Alto, Tenor, Bassus, and their secondary counterparts (S2, A2, T2, B2)—capturing clefs, mensurations, start pitches, semitone interval incipits (_incipit), and LilyPond notation (_LYncipit).
+* 
 ### `addmovementBHP`:
 
 `addmovementBHPreg` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
