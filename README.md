@@ -10,7 +10,7 @@ The toolkit consists of the following elements:
 
 Contains structured tables following the design of the BHP input data forms.
 
-### `addmovementBHPreg.py`:
+### `addmovementBHP`:
 
 `addmovementBHPreg` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
 
@@ -21,9 +21,30 @@ Contains structured tables following the design of the BHP input data forms.
 * **Database Synchronization:** Captures the newly generated platform URL (`URL_BHP`) upon a successful upload and writes it back to the local SQLite database (`movement02` table).
 * **Error Management:** Detects if Drupal rejects a form due to validation errors, alerting you in the terminal so you can review problematic records without corrupting your data tracking.
 
----
-### What `lily2semi_batch.py` does
+There are availabe two versios of 'addmovementBHP'
 
+* **addmovementBHPreg.py** (OS Evironment Version): This version runs directly using the global system Python installation and system-wide packages. While it doesn't require activating a virtual environment beforehand, it is more susceptible to breaking if global Python packages or system libraries are updated or changed, which can occasionally cause compatibility issues with browser automation tools.
+
+* **addmovementBHPvenv** (Virtual Environment Version): This version runs inside an isolated Python virtual environment configured specifically for your project. Its main advantage is that all dependencies (such as Selenium, WebDriver binaries, colorama, etc.) are self-contained within that environment. This prevents version conflicts with other Python packages installed globally on your Linux system and ensures a stable, predictable execution environment every time you activate it.
+
+---
+
+### 'alter_mens_clonerBHP'
+
+`alter_mens_clonerBHP` is an interactive Python script designed to streamline the propagation of musicological metadata across multiple voice parts within your local SQLite database for specific sources.
+
+#### Key Functions
+
+* **Metadata Cloning:** It reads the foundational musicological values of **armadura** (`S_alter`) and **mensuración** (`S_mens`) from the Superius voice of a movement.
+* **Voice Validation:** It checks whether the respective lower voices—Altus (`A_start_pitch`), Tenor (`T_start_pitch`), and Bassus (`B_start_pitch`) contain active musical data, ensuring it only targets voices that actually exist in that specific piece.
+* **Dynamic SQL Updates:** It builds customized database updates on the fly, propagating the Superius armor and mensuration values into the equivalent fields for the active lower voices (`A_alter`/`A_mens`, `T_alter`/`T_mens`, `B_alter`/`B_mens`).
+* **Interactive Control:** Running directly in your terminal, it pauses at each record to show you the base values and detected voices, allowing you to review and choose whether to save (`ENTER`), skip (`s`), or exit (`q`) step-by-step.
+
+---
+
+### `lily2semi_batch.py`
+
+`lily2semi_batch` is a development of `lily2semi1by1`, in which the LilyPond code must be copied one by one into the terminal to be translated into semitone code.
 The script automates the musicological data processing workflow directly from your terminal in an interactive, step-by-step manner:
 
 1. **Filters Records**: Connects to your SQLite database and retrieves records from a specific source (such as `E-VAc 06`) that still need processing.
