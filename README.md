@@ -15,7 +15,8 @@ Playing the SQL sentences in the file 'BHP_database_design.txt' in a SQL console
 * **"work"** Table: Manages information regarding specific musical compositions linked to a source (e.g., titles, text incipits, genres, liturgical contexts, ascriptions, and modern editions). It connects to the source table via a foreign key (S_ID).
 
 * **"movement"** Table: Tracks individual movements and compositional parts, linked to both sources and works (S_ID and W_ID). It includes detailed voice-specific musical parameters for polyphonic parts—such as Cantus, Alto, Tenor, Bassus, and their secondary counterparts (S2, A2, T2, B2)—capturing clefs, mensurations, start pitches, semitone interval incipits (_incipit), and LilyPond notation (_LYncipit).
-* 
+
+   
 ### `addmovementBHP`:
 
 `addmovementBHPreg` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
