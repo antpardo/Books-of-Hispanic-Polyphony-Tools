@@ -67,9 +67,9 @@ sys.stdout = tee
 sys.stdout.isatty = lambda: True 
 
 # Credenciales (¡Recomendable usar variables de entorno en lugar de texto plano!)
-usr = os.getenv('BHP_USER', 'Antonio')
-psw = os.getenv('BHP_PASS', 'anatema2001')
-submission_author = 'Antonio Pardo-Cayuela'
+usr = os.getenv('BHP_USER', 'user')
+psw = os.getenv('BHP_PASS', 'yourpassword')
+submission_author = 'your_name'
 
 db_path = '/home/antonio/Dropbox/CSIC-IMF_BHP/valencia_BHP/BHP_dB.sqlite'
 
