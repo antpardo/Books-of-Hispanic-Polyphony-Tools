@@ -6,19 +6,53 @@ Developed by Antonio Pardo-Cayuela (University of Murcia), these tools facilitat
 
 The toolkit consists of the following elements:
 
-* **SQLite Database (`BHP_dB.sqlite`)**: Contains structured tables following the design of the BHP input data forms.
-* **Python Automation Scripts**:
-* *Conversion Utilities*: `lily2semi` to automatically parse LilyPond code into numerical semitone intervals and convert notes into standard Latin nomenclature to be inserted automatically in the field 'starting pitch' of every voice ('lily2semi_batch'), supervised step-by-step. 
-* *Web Submission*: Selenium-based scripts optimized with intelligent waits and JavaScript injection to populate Drupal forms and record generated platform URLs back into the local database ("addmovementBHP2026.py").
+### SQLite Database (`BHP_dB.sqlite`)
+
+Contains structured tables following the design of the BHP input data forms.
+
+### `addmovementBHPreg.py`:
+
+`addmovementBHPreg` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
+
+#### Key Functions
+
+* **Form Automation:** Automatically navigates the web form and fills in metadata fields, including complex WYSIWYG text editors (for fields like Remarks and Comments) using direct JavaScript injection to bypass interface blocks.
+* **Smart Submission Handling:** Clicks the submit button and uses intelligent web driver waits (`EC.url_changes`) to ensure the server has fully processed the creation of the new record.
+* **Database Synchronization:** Captures the newly generated platform URL (`URL_BHP`) upon a successful upload and writes it back to the local SQLite database (`movement02` table).
+* **Error Management:** Detects if Drupal rejects a form due to validation errors, alerting you in the terminal so you can review problematic records without corrupting your data tracking.
+
+---
+### What `lily2semi_batch.py` does
+
+The script automates the musicological data processing workflow directly from your terminal in an interactive, step-by-step manner:
+
+1. **Filters Records**: Connects to your SQLite database and retrieves records from a specific source (such as `E-VAc 06`) that still need processing.
+2. **Converts LilyPond Code**: Reads the LilyPond melodic string (`S_LYincipit`) and transforms it into numerical semitone intervals (`S_incipit`) using your custom interval conversion logic (`lily2semi`).
+3. **Extracts Starting Pitch**: Parses the first note from the LilyPond code (ignoring initial pauses) and translates it into standard Latin pitch nomenclature (e.g., *Do*, *Re#/Mib*, *La#/Sib*) for the designated voice column (`S_start_pitch`).
+4. **Interactive Terminal Review**: Displays the original LilyPond code alongside the calculated outputs for each record, letting you review, save (`ENTER`), skip (`s`), or exit (`q`) safely before updating the database.
+
+#### Configuration Parameters
+
+To make the script work according to your specific database structure and source files, you need to adjust the variables located at the very bottom of the script (`if __name__ == "__main__":`):
+
+* **`DB_PATH`**: The full file path to your SQLite database (e.g., `'/home/.../BHP_dB.sqlite'`).
+* **`TABLA`**: The name of your database table (e.g., `'BHPmovements'`).
+* **`COLUMNA_ID`**: The primary key column name (e.g., `'M_ID'`).
+* **`COLUMNA_FUENTE`**: The column used to filter sources (e.g., `'Source'`).
+* **`FUENTE_FILTRO`**: The specific source value you want to target (e.g., `'E-VAc 06'`).
+* **`COLUMNA_LILYPOND`**: The source column containing the LilyPond code (e.g., `'S_LYincipit'`).
+* **`COLUMNA_SEMITONOS`**: The destination column where semitone intervals will be saved (e.g., `'S_incipit'`).
+* **`COLUMNA_PRIMERA_NOTA`**: The destination column where the translated Latin starting pitch will be saved (e.g., `'S_start_pitch'`).
+
 
 
 ## About Books of Hispanic Polyphony
 
-**Books of Hispanic Polyphony (BHP)** is a specialized research initiative and digital platform dedicated to the documentation, study, and dissemination of Renaissance polyphonic music repertories associated with the Hispanic world. Accessible via its digital platform ([https://hispanicpolyphony.eu](https://hispanicpolyphony.eu)), the project serves as a premier open-access repository for musicologists, historians, and performers.
+**Books of Hispanic Polyphony (BHP)** is a digital catalogue dedicated to the documentation, study, and dissemination of Renaissance polyphonic music repertories associated with the Hispanic world. Accessible via its digital platform ([https://hispanicpolyphony.eu](https://hispanicpolyphony.eu)), the project serves as a premier open-access repository for musicologists, historians, and performers.
 
 Created under the direction of Emilio Ros-Fábregas, the platform bridges archival musicology and digital humanities. It provides detailed codicological and musical descriptions, standardizes incipits, and offers data on sources, composers, and works, fostering comparative analysis of Hispanic sacred and secular polyphony from the 15th to the 19th centuries.
 
-The website acts as a resource for researchers, academic institutions, and early music performers exploring cultural heritage and manuscript transmission across Spain, Portugal, and the Americas. By integrating structured databases with web publishing technologies, Books of Hispanic Polyphony ensures long-term preservation and global accessibility of rare musical sources.
+The website acts as a resource for researchers, academic institutions, and early music performers exploring cultural heritage and manuscript transmission across Spain, Portugal, and the Americas. By integrating structured databases with web publishing technologies, Books of Hispanic Polyphony ensures long-term preservation and global accessibility of musical sources.
 
 ### Project Context and Team
 
