@@ -2,7 +2,7 @@
 
 This set of tools is designed for the management, conversion, and uploading of large amounts of musicological data—specifically regarding sources, movements, and musical incipits—to the digital platform of **Books of Hispanic Polyphony (BHP)**. The aim is to streamline data workflows, improve the consistency of uploaded data, and reduce processing time through automated SQLite database synchronization and terminal-based review scripts.
 
-Developed by Antonio Pardo-Cayuela (University of Murcia), these tools facilitate the processing of source data. The toolkit incorporates automated routines for metadata propagation across polyphonic voices (Superius, Altus, Tenor, Bassus, etc), conversion of LilyPond notation into semitone interval sequences (`lily2semi`), and Selenium-based browser automation to seamlessly submit movement records directly into the Drupal-powered BHP platform.
+Developed by Antonio Pardo-Cayuela (University of Murcia), these tools facilitate the processing of source data. The toolkit incorporates automated routines for metadata propagation across polyphonic voices (Superius, Altus, Tenor, Bassus, etc), conversion of LilyPond notation into semitone interval sequences (`lily2semi`), and Selenium-based browser automation to seamlessly submit movement records directly into the Backdrop CMS-powered BHP platform.
 
 The toolkit consists of the following elements:
 
@@ -19,14 +19,14 @@ Playing the SQL sentences in the file 'BHP_database_design.txt' in a SQL console
    
 ### `addmovementBHP`:
 
-`addmovementBHP` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Drupal-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
+`addmovementBHP` is a Python automation script powered by **Selenium** designed to bridge your local SQLite database with the Backdrop CMS-powered web platform of **Books of Hispanic Polyphony (BHP)**. Its primary goal is to automate the creation and submission of musical movement records.
 
 #### Key Functions
 
 * **Form Automation:** Automatically navigates the web form and fills in metadata fields, including complex WYSIWYG text editors (for fields like Remarks and Comments) using direct JavaScript injection to bypass interface blocks.
 * **Smart Submission Handling:** Clicks the submit button and uses intelligent web driver waits (`EC.url_changes`) to ensure the server has fully processed the creation of the new record.
 * **Database Synchronization:** Captures the newly generated platform URL (`URL_BHP`) upon a successful upload and writes it back to the local SQLite database (in the "movemen" table).
-* **Error Management:** Detects if Drupal rejects a form due to validation errors, alerting you in the terminal so you can review problematic records without corrupting your data tracking.
+* **Error Management:** Detects if Backdrop CMS rejects a form due to validation errors, alerting you in the terminal so you can review problematic records without corrupting your data tracking.
 
 There are availabe two versios of "addmovementBHP":
 
@@ -87,30 +87,30 @@ The website acts as a resource for researchers, academic institutions, and early
 The development of Hispanic Polyphony initiatives has been supported by research grants and projects focused on the digital transition and heritage preservation in musicology.
 
 **Research and Development Team:**
-* Dr. Emilio Ros-Fábregas, Director
+* Dr. Emilio Ros-Fábregas, Director,
 Tenured Researcher ad honorem in Musicology, IMF-CSIC, Barcelona
 
-* Dr. María Gembero-Ustárroz
+* Dr. María Gembero-Ustárroz,
 Tenured Researcher in Musicology, IMF-CSIC
 
-* Dr. Andrea Puentes-Blanco
+* Dr. Andrea Puentes-Blanco,
 Tenured Researcher in Musicology, IMF-CSIC
 
-* Juan José Pérez-Gual
-Technitian PTA, IMF-CSIC
+* Juan José Pérez-Gual,
+Technitian PTA, IMF-CSIC,
 Ph.D. candidate, Musicology, Universidad de Granada
 
-* Dr. Ascensión Mazuela-Anguita
+* Dr. Ascensión Mazuela-Anguita,
 Tenured professor, Universidad de Granada
 
-* Dr. Giuseppe Fiorentino
+* Dr. Giuseppe Fiorentino,
 Tenured professor, Universidad de Cantabria
 
-* Dr. Javier Marín-López
+* Dr. Javier Marín-López,
 Professor, Universidad de Jaén
 
-* Dr. Antonio Pardo Cayuela
+* Dr. Antonio Pardo Cayuela,
 "Profesor Colaborador", Universidad de Murcia
 
-* Dr. Pablo López-Rocamora
+* Dr. Pablo López-Rocamora,
 Universidad de Murcia
